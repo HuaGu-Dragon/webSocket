@@ -126,14 +126,8 @@ async fn write(
                 }
                 Message::Text(message.message.into())
             }
-            ChatMessage::Join(user) => {
-                let message = json!(user);
-                Message::Text(message.to_string().into())
-            }
-            ChatMessage::Leave(user) => {
-                let message = json!(user);
-                Message::Text(message.to_string().into())
-            }
+            ChatMessage::Join(join) => Message::Text(join.into()),
+            ChatMessage::Leave(leave) => Message::Text(leave.into()),
         };
         if let Err(_) = sender.send(message).await {
             break;
