@@ -124,8 +124,7 @@ async fn write(
                         continue;
                     }
                 }
-                let message = json!(message);
-                Message::Text(message.to_string().into())
+                Message::Text(message.message.into())
             }
             ChatMessage::Join(user) => {
                 let message = json!(user);
